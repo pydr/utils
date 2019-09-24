@@ -26,8 +26,9 @@ func MakeCode(httpCode, code int, status bool, msg string) *Code {
 	}
 }
 
-func (c *Code) SetErrorMsg(err error) {
+func (c *Code) SetErrorMsg(err error) *Code {
 	c.Err = err
+	return c
 }
 
 func MakeResp(code *Code, data interface{}) *Response {
