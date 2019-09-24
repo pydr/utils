@@ -17,14 +17,17 @@ type (
 	}
 )
 
-func MakeCode(httpCode, code int, status bool, msg string, err error) *Code {
+func MakeCode(httpCode, code int, status bool, msg string) *Code {
 	return &Code{
 		Status:     status,
 		Code:       code,
 		Message:    msg,
 		HttpStatus: httpCode,
-		Err:        err,
 	}
+}
+
+func (c *Code) SetErrorMsg(err error) {
+	c.Err = err
 }
 
 func MakeResp(code *Code, data interface{}) *Response {
@@ -35,5 +38,5 @@ func MakeResp(code *Code, data interface{}) *Response {
 }
 
 var (
-	Success = MakeCode(http.StatusOK, 0, true, "success", nil)
+	Success = MakeCode(http.StatusOK, 0, true, "success")
 )
