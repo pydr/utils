@@ -2,7 +2,7 @@ package utils
 
 import "reflect"
 
-// 判断obj是否在target中，target支持的类型arrary,slice,map
+// 判断obj是否在target中，target支持的类型array,slice,map
 func Contains(collection interface{}, that interface{}) bool {
 	targetValue := reflect.ValueOf(collection)
 	switch reflect.TypeOf(collection).Kind() {
