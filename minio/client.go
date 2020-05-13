@@ -30,3 +30,7 @@ func (c *Client) Upload(bucket, location, filename, filepath string) error {
 	_, err = c.client.FPutObject(bucket, filename, filepath, minio.PutObjectOptions{ContentType: "application/octet-stream"})
 	return err
 }
+
+func (c *Client) Download(bucket, filename, saveDir string) error {
+	return c.client.FGetObject(bucket, filename, saveDir, minio.GetObjectOptions{})
+}
